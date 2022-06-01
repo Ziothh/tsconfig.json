@@ -2,14 +2,14 @@
 ## Usage
 
 Install as a dev dependency on a particular project:
-```
-yarn add -D tsconfig.json
-npx tsconfig.json
+```bash
+yarn add -D @ziothh/tsconfig.json
+npx @ziothh/tsconfig.json
 ```
 
 Install globally (recommended if you are using typescript very often):
 ```bash
-yarn global add tsconfig.json
+yarn global add @ziothh/tsconfig.json
 # now you don't have to prefix this command with npx!
-tsconfig.json
+@ziothh/tsconfig.json
 ```
