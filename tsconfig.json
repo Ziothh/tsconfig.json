@@ -1,10 +1,11 @@
 {
     "compilerOptions": {
-        "target": "ESNext",
-        "module": "Node16",
+        "target": "es6",
+        "module": "CommonJS",
+        "moduleResolution": "Node",
         "skipLibCheck": true,
-        "sourceMap": true,
-        "outDir": "./dist",
+        "sourceMap": false,
+        "outDir": "script/dist",
         "removeComments": true,
         "noImplicitAny": false,
         "strictNullChecks": true,
@@ -21,7 +22,7 @@
         "emitDecoratorMetadata": true,
         "strict": false,
         "resolveJsonModule": true,
-        "typeRoots": ["src/types", "./node_modules/@types"],
+        "typeRoots": ["script/src/types", "./node_modules/@types"],
         "baseUrl": ".",
         "paths": {
             // "@entities": ["src/entities/index.ts"],
@@ -37,5 +38,5 @@
         "preferTsExts": true
     },
     "exclude": ["node_modules"],
-    "include": ["./src/**/*.ts"]
+    "include": ["script/src/**/*.ts"]
 }
