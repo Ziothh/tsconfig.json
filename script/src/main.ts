@@ -14,45 +14,63 @@ const hasArgv = (arg: string) => process.argv.some(
 
 
 // Constants
-const CONFIG_FOLDER_PATH = path.resolve(__dirname, "..",'config');
+const CONFIG_FOLDER_PATH = path.resolve(__dirname, "..", 'config');
 const DEFAULT_TECHNOLOGY = "web"
 
 
 // Script
-const useDefault = hasArgv("-y");
-
 /** A map of the frameworknames and the absolute file path to their tsconfig */
-const configFiles: {[frameworkName: string]: string} = {};
+interface IConfigFileMap {
+    [technologyName: string]: string
+}
 
+const getConfigFileName = async (configFiles: IConfigFileMap): Promise<string> => {
+    const useDefault = hasArgv("-y");
 
-(async () => {
     const files = await readdir(CONFIG_FOLDER_PATH).catch(__errorAndExit);
 
-      for (let f of files) {
+    for (const f of files) {
         // framework name is situated between 2 dots eg- react between 2 '.'(s)
         const frameworkName = f.split('.')[1];
         configFiles[frameworkName] = path.join(CONFIG_FOLDER_PATH, f);
-      }
+    }
 
-      const technologyName = useDefault ? DEFAULT_TECHNOLOGY : (await inquirer.prompt([{
+    const technologyNames = Object.keys(configFiles)
+
+    if (useDefault) return DEFAULT_TECHNOLOGY
+    
+    const technologyFlag = technologyNames.find(t => hasArgv(`--${t}`))
+    if (technologyFlag !== undefined) return technologyFlag
+
+    return (await inquirer.prompt([{
         type: "list",
         message: "Pick the technology you're using:",
         name: "technology",
         choices: Object.keys(configFiles)
+        // Set the default value as the first value
         .sort((a, _) => a === DEFAULT_TECHNOLOGY ? -1 : 0)
+        // Add [default] to the default value name
         .map(tName => ({
             // key: "TODO",
             name: tName === DEFAULT_TECHNOLOGY ? `${tName} [default]` : tName,
             value: tName,
         })),
         default: DEFAULT_TECHNOLOGY,
-      }])).technology
+    }])).technology as string
+}
 
-      const config = await readFile(configFiles[technologyName]).catch(__errorAndExit);
 
-      const generatedTsconfigPath = path.join(process.cwd(), 'tsconfig.json');
+(async () => {
+    const configFiles: IConfigFileMap = {};
 
-      // Maybe I'll add this back in later
+    const technologyName = await getConfigFileName(configFiles)
+    console.log("You chose: ", technologyName)
+
+    const config = await readFile(configFiles[technologyName]).catch(__errorAndExit);
+
+    const generatedTsconfigPath = path.join(process.cwd(), 'tsconfig.json');
+
+    // ? Maybe I'll add this back in later
     //   if (technology === "node") {
     //     const reg = new RegExp(/(?<=v)(\d+)/);
     //     const version = parseInt(reg.exec(process.version)![0]);
@@ -81,7 +99,7 @@ const configFiles: {[frameworkName: string]: string} = {};
     //     }
     //   }
 
-      await writeFile(generatedTsconfigPath, config.toString()).catch(__errorAndExit);
+    await writeFile(generatedTsconfigPath, config.toString()).catch(__errorAndExit);
 
-      console.log("tsconfig.json successfully created");
+    console.log("tsconfig.json successfully created");
 })();
