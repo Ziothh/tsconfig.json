@@ -3,6 +3,8 @@ import inquirer from "inquirer"
 import path from "path";
 import { writeFile, readdir, readFile } from "fs/promises";
 
+// TODO: add minimist if you want to dig deeper into using args
+
 // Helpers
 const __errorAndExit = (error: any) => {
     console.error(error)
