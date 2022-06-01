@@ -2,10 +2,10 @@
     "name": "@ziothh/tsconfig.json",
     "version": "0.0.3",
     "description": "A CLI for quickly creating an opinionated tsconfig.json",
-    "main": "script/dist/index.js",
-    "bin": "script/dist/index.js",
+    "main": "script/dist/main.js",
+    "bin": "script/dist/main.js",
     "scripts": {
-        "start": "node script/dist/index.js",
+        "start": "node script/dist/main.js",
         "semantic-release": "semantic-release"
     },
     "keywords": [
