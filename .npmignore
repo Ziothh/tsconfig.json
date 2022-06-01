@@ -1,2 +1,6 @@
 README.md
 LICENSE
+script/src
+node_modules
+tsconfig.json
+pnpm-lock.yaml

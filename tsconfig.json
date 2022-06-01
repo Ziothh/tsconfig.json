@@ -7,36 +7,27 @@
         "sourceMap": false,
         "outDir": "script/dist",
         "removeComments": true,
-        "noImplicitAny": false,
+        "noImplicitAny": true,
         "strictNullChecks": true,
         "strictFunctionTypes": true,
+        "keyofStringsOnly": true,
         "noImplicitThis": true,
-        "noUnusedLocals": false,
-        "noUnusedParameters": false,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
         "noImplicitReturns": true,
         "noFallthroughCasesInSwitch": true,
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
         "experimentalDecorators": true,
-        "allowJs": true,
+        "allowJs": false,
         "emitDecoratorMetadata": true,
-        "strict": false,
+        "strict": true,
         "resolveJsonModule": true,
         "typeRoots": ["script/src/types", "./node_modules/@types"],
         "baseUrl": ".",
-        "paths": {
-            // "@entities": ["src/entities/index.ts"],
-            // "@entities/*": ["src/entities/*"],
-            // "@config/*": ["src/config/*"],
-            // "@helpers/*": ["src/helpers/*"],
-            // "@mytypes/*": ["src/types/*"],
-            // "@server/*": ["src/server/*"],
-            // "@shared/*": ["../shared/*"]
-        }
+        "paths": {}
     },
-    "ts-node": {
-        "preferTsExts": true
-    },
+
     "exclude": ["node_modules"],
     "include": ["script/src/**/*.ts"]
 }
