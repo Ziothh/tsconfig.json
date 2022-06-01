@@ -1,7 +1,7 @@
 {
     "name": "@ziothh/tsconfig.json",
-    "version": "1.0.0",
-    "description": "Quickly create an opinionated tsconfig.json",
+    "version": "0.0.3",
+    "description": "A CLI for quickly creating an opinionated tsconfig.json",
     "main": "script/dist/index.js",
     "bin": "script/dist/index.js",
     "scripts": {
