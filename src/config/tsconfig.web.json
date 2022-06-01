@@ -1,0 +1,41 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "Node16",
+        "skipLibCheck": true,
+        "sourceMap": true,
+        "outDir": "./dist",
+        "removeComments": true,
+        "noImplicitAny": false,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "allowJs": true,
+        "emitDecoratorMetadata": true,
+        "strict": false,
+        "resolveJsonModule": true,
+        "typeRoots": ["src/types", "./node_modules/@types"],
+        "baseUrl": ".",
+        "paths": {
+            "@entities": ["src/entities/index.ts"],
+            "@entities/*": ["src/entities/*"],
+            "@config/*": ["src/config/*"],
+            "@helpers/*": ["src/helpers/*"],
+            "@mytypes/*": ["src/types/*"],
+            "@server/*": ["src/server/*"],
+            "@shared/*": ["../shared/*"]
+        }
+    },
+    "ts-node": {
+        "preferTsExts": true
+    },
+    "exclude": ["node_modules"],
+    "include": ["./src/**/*.ts"]
+}

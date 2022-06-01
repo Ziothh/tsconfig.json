@@ -1,34 +1,69 @@
 {
-  "compilerOptions": {
-    "experimentalDecorators": true,
-    "baseUrl": ".",
-    "outDir": "build/dist",
-    "module": "esnext",
-    "target": "es2017",
-    "lib": ["es6", "dom", "esnext.asynciterable", "es2017"],
-    "sourceMap": true,
-    "allowJs": true,
-    "jsx": "react",
-    "moduleResolution": "node",
-    "rootDir": "src",
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true,
-    "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true,
-    "removeComments": true
-  },
-  "exclude": [
-    "node_modules",
-    "build",
-    "scripts",
-    "acceptance-tests",
-    "webpack",
-    "jest",
-    "src/setupTests.ts"
-  ]
+    "compilerOptions": {
+        // Paths
+        "outDir": "./js",
+        "baseUrl": ".",
+        "typeRoots": ["node_modules/@types/", "@types", "./src/types/global"],
+
+        // JS target
+        "module": "ESNext",
+        "target": "ESNext",
+        "lib": ["DOM", "DOM.Iterable", "ESNext.AsyncIterable", "ESNext"],
+
+        // Personal taste
+        "noEmit": true, // if true: Will not compile code and only type check
+        "declaration": false, // Adds {name}.d.ts to the build
+
+        // Modes
+
+        // ! Dev
+        "sourceMap": true,
+        "isolatedModules": false,
+        "noUnusedLocals": false,
+        "noImplicitAny": false,
+        "noUnusedParameters": false,
+        "noImplicitReturns": false,
+        "noImplicitThis": false,
+        "removeComments": false,
+        "strict": true,
+
+        // ! Prod
+        // "sourceMap": false,
+        // "noUnusedLocals": true,
+        // "isolatedModules": true,
+        // "noImplicitAny": true,
+        // "noImplicitReturns": true,
+        // "noImplicitThis": true,
+        //"removeComments": true
+        // "strict": true,
+
+        // Standard settings
+        // JS
+        "allowJs": true, // Allows JS files to be used in TS
+        "checkJs": false, // Checks those JS files
+        // "jsx": "react-jsx",
+        "jsx": "preserve",
+        // Other
+        "experimentalDecorators": true,
+        "moduleResolution": "Node",
+        "strictNullChecks": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "skipLibCheck": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "noFallthroughCasesInSwitch": true,
+        "resolveJsonModule": true,
+        // "types": ["vite-plugin-svgr/client"],
+        "paths": {
+            "@components/*": ["./src/components/*"],
+            "@hooks": ["./src/hooks"],
+            "@hooks/*": ["./src/hooks/*"],
+            "@context/*": ["./src/context/*"],
+            "@myTypes": ["./src/types/import"],
+            "@myTypes/*": ["./src/types/import/*"],
+            "@assets/*": ["./assets/*"]
+        }
+    },
+    "include": ["./src/**/*.ts", "./src/**/*.tsx"],
+    "exclude": ["node_modules", "build", "public", "scripts", "old"]
 }
