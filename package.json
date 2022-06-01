@@ -6,6 +6,8 @@
     "bin": "script/dist/main.js",
     "scripts": {
         "start": "node script/dist/main.js",
+        "build": "tsc",
+        "build:watch": "tsc -w",
         "semantic-release": "semantic-release"
     },
     "keywords": [
